@@ -16,7 +16,7 @@ if(cluster.isPrimary){
         cluster.fork();
     }
     cluster.on('exit', (worker, code, signal) => {
-        console.log(`Worker ${worker.process.pid} died`);
+        console.log(`Worker of ${worker.process.pid} just died`);
     });
 }
 else{
@@ -31,7 +31,7 @@ const sessionStore = new (SequelizeStore(session.Store))({
     tableName: 'Session' // Optional: specify a custom session table name
   });
   sessionStore.on('error',(error)=>{
-    console.log(error.message);
+    console.log("Error ::"+error.message);
   })
     
     app.use(session({
@@ -85,7 +85,7 @@ const sessionStore = new (SequelizeStore(session.Store))({
     
     app.listen(port,()=>{
 
-        console.log('listening on port:'+port+':'+process.pid);
+        console.log('listening on port:::'+port+':'+process.pid);
     })
 }
 

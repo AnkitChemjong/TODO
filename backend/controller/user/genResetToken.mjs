@@ -24,6 +24,7 @@ const genResetToken = async (req,res)=>{
         user.resetSalt=null;
         user.resetToken=null;
         user.tokenExpirationDate=null;
+        await user.save();
         res.json({message:error.message});
       }
  }

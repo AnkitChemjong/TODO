@@ -20,9 +20,11 @@ const fileFilterer=(req,file,cb)=>{
 
    }
    else{
-      return cb(new Error("file not allowed"),false);
+      return cb(new Error("file not allowed to upload..."),false);
    }
 }
 
-const upload=multer({storage:storage,fileFilter:fileFilterer});
+const upload=multer({storage:storage,fileFilter:fileFilterer,limits:{
+   fileSize:1024*1024
+}});
 export default upload;
